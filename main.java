@@ -8,25 +8,16 @@ import java.util.Scanner;
 public class main{
 
         public static void main(String[] args) throws IOException {
-
                 Carte c=new Carte();
-                c.citesteCarti("eBibloteca/carti.txt");
-                File file = new File("eBibloteca/imprumuturi.txt");
-
-
+                c.citesteCarti("carti.txt");
+                File file = new File("imprumuturi.txt");
                 if (file.length() != 0) {
                     Imprumut imp=new Imprumut();
                     imp.citesteImprumuturi();
                 }
-                
                 new Biblioteca();
-
-
         }
-
-
-
-        }
+}
 
 
 

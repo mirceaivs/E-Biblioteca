@@ -27,27 +27,6 @@ public class Carte {
     }
 
 
-//    public void citesteCarti() {
-//        try {
-//            BufferedReader buf = new BufferedReader(new FileReader("carti.txt"));
-//            String line = null;
-//
-//            while ((line = buf.readLine()) != null) {
-//                String[] info = line.split("_");
-//                boolean imprumut = Boolean.parseBoolean(info[3]);
-//                Carte cartisoare = new Carte(info[0], info[1], info[2], imprumut);
-//                carti.add(cartisoare);
-//            }
-//            buf.close(); // Închide fișierul după ce termini operațiile de citire
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Fișierul carti.txt nu a fost găsit.");
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            System.out.println("Eroare la citirea fișierului carti.txt.");
-//            e.printStackTrace();
-//        }
-//    }
-
     public void citesteCarti(String fileName) {
         try (BufferedReader buf = new BufferedReader(new FileReader(fileName))) {
             String line;
