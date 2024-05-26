@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import static jogamp.common.os.elf.SectionArmAttributes.Tag.File;
+
 public class Carte {
     private String codISBN;
     private String titlu;
@@ -24,22 +26,44 @@ public class Carte {
     public Carte() {
     }
 
-    
-    public void citesteCarti()throws FileNotFoundException, IOException
-    {
-        BufferedReader buf=new BufferedReader(new FileReader("carti.txt"));
-        String line=null;
-       
-        while((line = buf.readLine()) != null)
-        {
-            
-            String info[]=line.split("_");          
-            boolean imprumut= Boolean.parseBoolean(info[3]);
-            Carte cartisoare=new Carte(info[0],info[1],info[2],imprumut);
-                carti.add(cartisoare);
 
+//    public void citesteCarti() {
+//        try {
+//            BufferedReader buf = new BufferedReader(new FileReader("carti.txt"));
+//            String line = null;
+//
+//            while ((line = buf.readLine()) != null) {
+//                String[] info = line.split("_");
+//                boolean imprumut = Boolean.parseBoolean(info[3]);
+//                Carte cartisoare = new Carte(info[0], info[1], info[2], imprumut);
+//                carti.add(cartisoare);
+//            }
+//            buf.close(); // Închide fișierul după ce termini operațiile de citire
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Fișierul carti.txt nu a fost găsit.");
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            System.out.println("Eroare la citirea fișierului carti.txt.");
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void citesteCarti(String fileName) {
+        try (BufferedReader buf = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = buf.readLine()) != null) {
+                String[] info = line.split("_");
+                if (info.length >= 4) {
+                    boolean imprumut = Boolean.parseBoolean(info[3]);
+                    Carte carte = new Carte(info[0], info[1], info[2], imprumut);
+                    carti.add(carte);
+                } else {
+                    System.out.println("Linie invalidă: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Eroare la citirea fișierului: " + e.getMessage());
         }
-        
     }
 
     public void updateCartiStatic(ArrayList<Carte> books,int n)

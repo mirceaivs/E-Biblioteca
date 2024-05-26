@@ -160,7 +160,7 @@ public class ImprumutFrame2 extends JFrame {
                 
                 
 
-                try (FileWriter f = new FileWriter("arhiva.txt", true);
+                try (FileWriter f = new FileWriter("eBibloteca/arhiva.txt", true);
                 BufferedWriter b = new BufferedWriter(f);
                 PrintWriter p = new PrintWriter(b);) {
 

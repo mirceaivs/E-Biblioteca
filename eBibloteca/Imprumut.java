@@ -59,7 +59,7 @@ public class Imprumut {
     //public Imprumut(String Nume,String CNP,LocalDate dataReturnare,int nrCarti, Carte
      public void citesteImprumuturi()throws FileNotFoundException, IOException
     {
-        BufferedReader buf=new BufferedReader(new FileReader("imprumuturi.txt"));
+        BufferedReader buf=new BufferedReader(new FileReader("eBibloteca/imprumuturi.txt"));
         String line=null;
        
         while((line = buf.readLine()) != null)

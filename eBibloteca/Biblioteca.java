@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Biblioteca implements ActionListener {
    private ArrayList<Carte> carti=new ArrayList<>();
-   //private ArrayList<Imprumut> imprumuturi=new ArrayList<>();
    private JButton b1,b2;
    private JFrame f=new JFrame("Biblioteca");
 
